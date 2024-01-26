@@ -5,33 +5,77 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Beer Details</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    margin: 20px;
+    background-color: #f8f8f8;
+    color: #333;
+}
 
-        h2 {
-            color: #333;
-        }
+h2 {
+    color: #1a1a1a;
+    text-align: center;
+    margin-bottom: 20px;
+}
 
-        img {
-            max-width: 100%;
-            max-height: 200px; /* Set your desired max height */
-            height: auto;
-        }
+img {
+    max-width: 100%;
+    max-height: 300px; /* Set your desired max height */
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 
-        .reviews {
-            margin-top: 20px;
-        }
+.reviews {
+    margin-top: 30px;
+}
 
-        .review-item {
-            list-style-type: none;
-            margin-bottom: 10px;
-        }
+.review-item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 
-        form {
-            margin-top: 20px;
-        }
+form {
+    margin-top: 20px;
+    text-align: center;
+}
+
+form label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #1a1a1a;
+}
+
+form input[type="text"] {
+    width: 60%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-right: 10px;
+    font-size: 16px;
+}
+
+form button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #45a049;
+}
+
     </style>
 </head>
 <body>
