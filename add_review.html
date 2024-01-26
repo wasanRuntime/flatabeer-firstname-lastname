@@ -20,7 +20,7 @@ h2 {
 
 img {
     max-width: 100%;
-    max-height: 300px; /* Set your desired max height */
+    max-height: 150px; /* Set your desired max height */
     height: auto;
     display: block;
     margin: 0 auto;
@@ -35,6 +35,55 @@ img {
 .review-item {
     background-color: #fff;
     border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.beer-details-container {
+    background-color: #fff;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+.beer-details-container h2 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.beer-details-container p {
+    color: #555;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.beer-details-container img {
+    display: block;
+    margin: 10px auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.beer-details-container {
+    width: 40%; /* Adjust the percentage as needed */
+    margin: 0 auto;
+    padding: 10px;
+    height: auto;
+    /* other styles... */
+}
+
+
+.reviews {
+    margin-top: 30px;
+}
+
+.review-item {
+    background-color: #fff;
+    border: 2px solid #ddd;
     border-radius: 4px;
     padding: 15px;
     margin-bottom: 15px;
@@ -80,13 +129,17 @@ form button:hover {
 </head>
 <body>
 
+
     <div class="beer-details-container" id="beerDetailsContainer">
         <!-- Beer details will be dynamically added here -->
+
     </div>
 
     <form id="reviewForm">
         <label for="newReview">Add a Review:</label>
         <input type="text" id="newReview" name="newReview" required>
+        <br>
+        <br>
         <button type="submit">Submit Review</button>
     </form>
 
@@ -100,7 +153,7 @@ form button:hover {
             // Sample beer data
             var beerData = {
                 id: 2,
-                name: "Pilsen Lager",
+                name: "Oh So flattering",
                 description: "A light, crisp and bitter IPA brewed with English and American hops. A small batch brewed only once.",
                 image_url: "https://images.punkapi.com/v2/4.png",
                 reviews: []
