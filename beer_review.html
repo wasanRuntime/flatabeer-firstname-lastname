@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Example: Display JSON Data to HTML Table</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    /* CSS styles for the page */
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      border: 2px double #ddd;
+    }
+
+    th, td {
+      padding: 10px 15px;
+      text-align: left;
+      color: #fff; /* Set the text color for table cells */
+      border: 2px double #ddd;
+      background-color: #454b4e; /* Set your desired color here */
+      font-size: 24px;
+    }
+
+    th {
+      background-color: #f2f2f2;
+      font-size: 30px;
+      font-weight: bold;
+      text-align: center;
+      color: #333; /* Set the text color for table headers */
+    }
+
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    tr:hover {
+      background-color: #f5f5f5;
+    }
+  </style>
+</head>
+<body>
+  <h1>JSON Data to HTML Table</h1>
+  <table id="data-table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Image</th>
+        <th>Reviews</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+  <!-- JavaScript code using jQuery -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Retrieve JSON data using fetch
+      fetch('db.json')
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`Error! status: ${response.status}`);
+          }
+          return response.json();
+        })
+        .then(data => {
+          // Assume you want to retrieve beer with ID 1 (change the ID as needed)
+          const beerId = 1;
+          const selectedBeer = data.beers.find(beer => beer.id === beerId);
+
+          if (selectedBeer) {
+            var tableBody = $("#data-table tbody");
+            var row = $("<tr></tr>");
+
+            row.append($("<td></td>").text(selectedBeer.name));
+            row.append($("<td></td>").text(selectedBeer.description));
+            row.append($("<td></td>").html(`<img src="${selectedBeer.image_url}" alt="${selectedBeer.name}" style="max-width: 100px; max-height: 100px;">`));
+            row.append($("<td></td>").text(selectedBeer.reviews.join(', ')));
+
+            tableBody.append(row);
+          } else {
+            console.error(`Beer with ID ${beerId} not found.`);
+          }
+        })
+        .catch(error => console.error(error));
+    });
+  </script>
+</body>
+</html>
