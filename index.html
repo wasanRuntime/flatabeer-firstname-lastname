@@ -1,93 +1,53 @@
-<!DOCTYPE html>
 <html>
-<head>
-  <title>Example: Display JSON Data to HTML Table</title>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <style>
-    /* CSS styles for the page */
-    body {
-      font-family: Arial, sans-serif;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <title>FlataBeer</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Great+Vibes|Open+Sans:400,600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <script defer type="text/javascript" src="app.js"></script>
+  </head>
+  <body>
+    <header>
+      <h1>FlataBeer</h1>
+      <nav>
+        <ul id="beer-list">
+          <li>Beer Names</li>
+        </ul>
+      </nav>
+    </header>
 
-    h1 {
-      text-align: center;
-      color: #333;
-    }
+    <main>
+      <div class="beer-details">
+        <h2 id="beer-name">Beer Name Goes Here</h2>
+        <img
+          id="beer-image"
+          alt="Beer Name Goes Here"
+          src="assets/image-placeholder.jpg"
+        />
+        <p>
+          <em id="beer-description">Beer Description Goes Here</em>
+        </p>
 
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      border: 2px double #ddd;
-    }
+        <form id="description-form">
+          <label for="description">Edited Description:</label>
+          <textarea id="description"></textarea>
+          <button type="submit">Update Beer</button>
+        </form>
 
-    th, td {
-      padding: 10px 15px;
-      text-align: left;
-      color: #fff; /* Set the text color for table cells */
-      border: 2px double #ddd;
-      background-color: #454b4e; /* Set your desired color here */
-      font-size: 24px;
-    }
-
-    th {
-      background-color: #f2f2f2;
-      font-size: 30px;
-      font-weight: bold;
-      text-align: center;
-      color: #333; /* Set the text color for table headers */
-    }
-
-    tr:nth-child(even) {
-      background-color: #f9f9f9;
-    }
-
-    tr:hover {
-      background-color: #f5f5f5;
-    }
-  </style>
-</head>
-<body>
-  <h1>Beers Details</h1>
-  <table id="data-table">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Image</th>
-        <th>Reviews</th>
-      </tr>
-    </thead>
-    <tbody></tbody>
-  </table>
-  <!-- JavaScript code using jQuery -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      // Retrieve JSON data using fetch
-      fetch('db.json')
-        .then(response => {
-          if (!response.ok) {
-            throw new Error(`Error! status: ${response.status}`);
-          }
-          return response.json();
-        })
-        .then(data => {
-          var tableBody = $("#data-table tbody");
-
-          // Iterate over each beer object in the JSON data
-          data.beers.forEach(beer => {
-            var row = $("<tr></tr>"); // Create a new table row
-
-            // Create table cells and fill them with the beer's data
-            row.append($("<td></td>").text(beer.name));
-            row.append($("<td></td>").text(beer.description));
-            row.append($("<td></td>").html(`<img src="${beer.image_url}" alt="${beer.name}" style="max-width: 100px; max-height: 100px;">`));
-            row.append($("<td></td>").text(beer.reviews.join(', '))); // Assuming reviews is an array
-
-            tableBody.append(row); // Add the row to the table body
-          });
-        })
-        .catch(error => console.error(error));
-    });
-  </script>
-</body>
+        <h3>Customer Reviews</h3>
+        <ul id="review-list">
+          <li>Replace with actual reviews</li>
+          <li>From the server</li>
+        </ul>
+        <form id="review-form">
+          <label for="review">Your Review:</label>
+          <textarea id="review"></textarea>
+          <button type="submit">Add review</button>
+        </form>
+      </div>
+    </main>
+  </body>
 </html>
